@@ -2,57 +2,56 @@ from . import _emoji as emoji
 import textwrap
 import discord
 
-class French:
+class English:
     def __init__(self):
         self._lang_name = "Français"
         self._lang_emoji = ":flag_fr:"
-        self._translator = "Nicendredi#1888, Thxbault#1000"
+        self._translator = "Nicendredi#1888"
         class Audio:
-            no_channel = emoji.cmd_fail + "You need to be in a voice channel."
+            no_channel = emoji.cmd_fail + "Vous devez être dans un salon vocal."
             need_upvote = discord.Embed(color=0x6441A4)
-            need_upvote.title = "Please upvote to continue"
-            need_upvote.description = "You need to upvote TwitchBot to listen to streams! **<https://link.twitchbot.io/upvote>**"
+            need_upvote.title = "Veuillez upvote pour continuer"
+            need_upvote.description = "Vous devez voter pour TwitchBot pour écouter les diffusions ! **<https://link.twitchbot.io/upvote>**"
             need_upvote.add_field(
-                name = "Want to skip upvoting?",
-                value = "[TwitchBot Premium](https://twitchbot.io/premium) lets you listen to streams without upvoting."
+                name = "Vous voulez passer outre le vote ?",
+                value = "[TwitchBot Prémium](https://twitchbot.io/premium) vous permet d'écouter les diffusions sans devoir voter."
             )
-            please_wait = "Please wait... " + emoji.loading
-            user_noexist = emoji.cmd_fail + "This user doesn't exist or is not currently streaming. Try entering a link to the channel."
-            np_title = "Now playing in {channel}"
-            np_desc = "{title}\n{viewer_count} currently watching"
-            np_leave = "Type '!twitch leave' to stop the stream"
-            connection_timeout = emoji.cmd_fail + "Voice connection timed out."
-            not_streaming = "I'm not streaming anything on this server right now."
-            disconnected = "Left the voice channel."
+            please_wait = "Veuillez patienter... " + emoji.loading
+            user_noexist = emoji.cmd_fail + "Cet utilisateur n'existe pas ou n'est pas en cours de diffusion. Essayez avec un lien vers sa chaîne."
+            np_title = "Diffusion en cours dans {channel}"
+            np_desc = "{title}\n{viewer_count} spectateurs"
+            np_leave = "Tapez '!twitch leave' pour arrêter la diffusion"
+            connection_timeout = emoji.cmd_fail + "Connection vocale timed out."
+            not_streaming = "Je ne diffuse rien sur ce serveur pour le moment."
+            disconnected = "A quitté le salon vocal."
         class Clips:
             command_usage = discord.Embed(color=discord.Color(0x6441A4))
-            command_usage.title = "Clips - Help"
+            command_usage.title = "Clips - Aide"
             command_usage.add_field(
-                name = "Commands",
+                name = "Commandes",
                 value = textwrap.dedent("""\
-                `!twitch clips from <user>` - Gets a clip from the specified Twitch user
-                `!twitch clips trending` - Gets a trending clip
-                `!twitch clips game <game>` - Gets a clip from the specified game
-                `!twitch clips uservoted` - Gets one of the most popular clips voted by TwitchBot users
+                `!twitch clips from <user>` - Récupère un clip de l'utilisateur Twitch indiqué
+                `!twitch clips trending` - Récupère un clip dans les Tendances
+                `!twitch clips game <game>` - Récupère un clip du jeu indiqué
+                `!twitch clips uservoted` - Récupère l'un des clips votés les plus populaires par les utilisateurs de TwitchBot
                 """)
             )
-            clip_desc = "Check out {user} playing {game}:\n{url}"
-            no_clips = emoji.cmd_fail + "No clips were found."
-            no_votes = emoji.cmd_fail + "Nobody has voted on any clips yet. Come back later."
-            uservote_clip_desc = "{vote_count} votes on this clip by {user}:\n{url}"
-            upvote_fail = emoji.cmd_fail + "**{user}**, your upvote couldn't be be processed."
+            clip_desc = "Regardez {user} jouer à {game}:\n{url}"
+            no_clips = emoji.cmd_fail + "Aucun clip trouvé."
+            no_votes = emoji.cmd_fail + "Personne n'a voté pour un clip pour l'instant. Revenez plus tard."
+            uservote_clip_desc = "{vote_count} votes pour ce clip par {user}:\n{url}"
+            upvote_fail = emoji.cmd_fail + "**{user}**, votre vote n'a pas pu être comptabilisé."
         class CommandsList:
             e = discord.Embed(color=discord.Color(0x6441A4))
-            e.title = emoji.twitch_icon + "TwitchBot Commands"
-            e.description = ":warning: __**Do not put `<>` or `[]` around command arguments.**__"
+            e.title = emoji.twitch_icon + "Commandes TwitchBot"
+            e.description = ":warning: __**Ne pas mettre de `<>` ou de `[]` autour des arguments de commandes.**__"
             e.add_field(
-                name="General",
+                name="Général",
                 value=textwrap.dedent("""\
-                `!twitch help` - Shows bot help
-                `!twitch info` - Shows bot info
-                `!twitch lang` - Sets bot language
-                `!twitch invite` - Displays a link to add TwitchBot to your server
-                `!twitch status` - Shows Twitch API status
+                `!twitch help` - Affiche l'aide du bot
+                `!twitch info` - Affiche l'info du bot
+                `!twitch invite` - Affiche un lien pour ajouter TwitchBot à votre serveur.
+                `!twitch status` - Affiche le statut de l'API Twitch
                 `!twitch ping` - Pong!
                 """),
                 inline=False
@@ -60,68 +59,68 @@ class French:
             e.add_field(
                 name="Twitch",
                 value=textwrap.dedent("""\
-                `!twitch user <user>` - Gets info on a Twitch channel
+                `!twitch user <user>` - Récupère l'info d'une chaîne Twitch
                 `!twitch stream user <user>` - Gets info on a user's stream
-                `!twitch stream watch <user>` - Watch a Twitch stream from Discord
-                `!twitch stream game <name>` - Watch someone stream the specified game
-                `!twitch stream top` - Fetches info on a top stream
-                `!twitch game <name>` - Gets info on a Twitch game
-                `!twitch top` - Gets the most popular Twitch games
+                `!twitch stream watch <user>` - Regarder une diffusion Twitch depuis Discord
+                `!twitch stream game <name>` - Regarder quelqu'un diffuser le jeu indiqué
+                `!twitch stream top` - Récupère l'info d'un stream dans le top
+                `!twitch game <name>` - Récupère l'info d'un jeu Twitch
+                `!twitch top` - Récupère les jeux les plus populaires sur Twitch
                 """),
                 inline=False
             )
             e.add_field(
                 name="Clips",
                 value=textwrap.dedent("""\
-                `!twitch clips from <user>` - Gets a clip from the specified Twitch user
-                `!twitch clips trending` - Gets a trending clip
-                `!twitch clips game <game>` - Gets a clip from the specified game
-                `!twitch clips uservoted` - Gets one of the most popular clips voted by TwitchBot users
+                `!twitch clips from <user>` - Récupère un clip de l'utilisateur Twitch indiqué
+                `!twitch clips trending` - Récupère un clip en Tendances
+                `!twitch clips game <game>` - Récupère un clip du jeu indiqué
+                `!twitch clips uservoted` - Récupère un des plus populaires clips votés par les utilisateurs de TwitchBot
                 """),
                 inline=False
             )
             e.add_field(
-                name="Streamer Notifications",
+                name="Notifications de streamer",
                 value=textwrap.dedent("""\
-                `!twitch notif add [#discord_channel] [streamer_name] [message]` - Adds a streamer notification for a streamer to the specified channel
-                `!twitch notif remove <#discord_channel> <streamer_name>` - Remove a streamer notification for a streamer to the specified channel
-                `!twitch notif list [#discord_channel]` - Lists the streamer notifications for the specified channel
-                `!twitch notif formatting` - Shows variables that you can insert into streamer notification messages
+                `!twitch notif add [#discord_channel] [streamer_name] [message]` - Ajoute une notification de diffusion de streamer dans le salon indiqué
+                `!twitch notif remove <#discord_channel> <streamer_name>` - Supprime une notification de diffusion de streamer dans le salon indiqué
+                `!twitch notif list [#discord_channel]` - Liste les notifications de diffusion pour le salon indiqué
+                `!twitch notif formatting` - Affiche les variables que vous pouvez insérer dans les messages de notification de diffusion de streamer
                 """),
                 inline=False
             )
             e.add_field(
-                name="Live Role",
+                name="Rôle en live",
                 value=textwrap.dedent("""\
-                `!twitch live_role set` - Sets the Live Role for the current server
-                `!twitch live_role filter` - Restricts Live Role to users with a specific role
-                `!twitch live_role delete` - Removes the Live Role configuration
-                `!twitch live_role view` - Tells you which role is currently set up
+                `!twitch live_role set` - Défini le rôle en live pour ce serveur
+                `!twitch live_role filter` - Restreint le rôle en live aux utilisateur avec le rôle indiqué
+                `!twitch live_role delete` - Efface la configuration du rôle en live
+                `!twitch live_role view` - Affiche quel rôle est actuellement configuré
                 """),
                 inline=False
             )
             e.add_field(
                 name="Audio",
                 value=textwrap.dedent("""\
-                `!twitch listen <user>` - Listen to a Twitch stream in the current voice channel
-                `!twitch nowplaying` - Shows the stream currently playing, if any
-                `!twitch leave` - Leaves a voice channel
+                `!twitch listen <user>` - Ecouter une diffusion Twitch dans le salon vocal courant
+                `!twitch nowplaying` - Affiche la diffusion en cours, si il y en a une
+                `!twitch leave` - Quitte le salon vocal
                 """),
                 inline=False
             )
             e.add_field(
-                name="Game Stats",
+                name="Statistiques de jeu",
                 value=textwrap.dedent("""\
-                `!twitch overwatch <pc/psn/xbl> <player>` - Shows Overwatch player stats
-                `!twitch fortnite <pc/psn/xbl> <player>` - Shows Fortnite player stats
+                `!twitch overwatch <pc/psn/xbl> <player>` - Affiche les statistiques de joueur d'Overwatch
+                `!twitch fortnite <pc/psn/xbl> <player>` - Affiche les statistiques de joueur de Fortnite
                 """),
                 inline=False
             )
             e.add_field(
-                name="Message Filter",
+                name="Filtre des messsage",
                 value=textwrap.dedent("""\
-                `!twitch filter set <sensitivity>` - Sets the server-wide toxicity filter
-                `!twitch filter remove` - Removes the server-wide toxicity filter
+                `!twitch filter set <sensitivity>` - Configure un filtre à toxicité sur tout le serveur
+                `!twitch filter remove` - Supprime le filtre à toxicité sur tout le serveur
                 """),
                 inline=False
             )
@@ -279,7 +278,7 @@ class French:
             add_success = emoji.cmd_success + "Added a notification for {user} in {channel}"
             list_title = "Streamer notifications for **#{channel}**"
             list_embed_limit = "Custom messages weren't included in the embed because there is a Discord-set limit of 1024 characters in a section. They'll still show when the user goes live."
-            no_notifs = "Notifications"
+            no_notifs = "No streamer notifications are set up for this channel."
             notifications = "No streamer notifications are set up for this channel."
             bulk_delete_confirm = "**You are about to delete {count} notifications in {channel}.** Are you sure that you want to do this? Reply with `yes` if you want to continue."
             bulk_delete_success = emoji.cmd_success + "Successfully deleted {count} notifications from {channel}."
